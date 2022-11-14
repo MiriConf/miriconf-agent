@@ -12,7 +12,7 @@ import (
 )
 
 type Hostname struct {
-	Hostname string `json:"hostname" bson:"hostname"`
+	Hostname string `json:"hostname"`
 }
 
 func main() {

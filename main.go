@@ -32,7 +32,7 @@ func main() {
 	json.Unmarshal(tokenDec, &hostname)
 
 	client := http.Client{}
-	response, err := http.NewRequest(http.MethodGet, "http://"+hostname.Hostname+"/api/v1/teams/list", nil)
+	response, err := http.NewRequest(http.MethodGet, "http://"+hostname.Hostname+"/api/v1/systems/ping", nil)
 	if err != nil {
 		print(err)
 	}
@@ -43,14 +43,14 @@ func main() {
 		"Authorization": {"Bearer " + serverToken},
 	}
 
-	teams, err := client.Do(response)
+	result, err := client.Do(response)
 	if err != nil {
 		panic(err)
 	}
 
-	defer teams.Body.Close()
+	defer result.Body.Close()
 
-	body, err := ioutil.ReadAll(teams.Body)
+	body, err := ioutil.ReadAll(result.Body)
 	if err != nil {
 		print(err)
 	}

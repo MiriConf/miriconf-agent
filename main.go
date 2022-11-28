@@ -73,12 +73,11 @@ func main() {
 		}
 	}
 
-	nixRebuild := exec.Command("nixos-rebuild", "switch")
-
-	err = nixRebuild.Run()
+	out, err := exec.Command("nixos-rebuild", "switch").Output()
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println(string(out))
 }
 
 func sendPing() {

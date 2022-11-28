@@ -85,7 +85,7 @@ func sendPing() {
 
 	data := strings.Split(serverToken, ".")
 
-	tokenDec, err := base64.StdEncoding.DecodeString(data[1])
+	tokenDec, err := base64.RawStdEncoding.DecodeString(data[1])
 	if err != nil {
 		panic(err)
 	}
@@ -132,7 +132,7 @@ func fetchConfig() string {
 
 	data := strings.Split(serverToken, ".")
 
-	tokenDec, err := base64.StdEncoding.DecodeString(data[1])
+	tokenDec, err := base64.RawStdEncoding.DecodeString(data[1])
 	if err != nil {
 		panic(err)
 	}
